@@ -11,9 +11,9 @@ import uk.co.mistyknives.kick4j.events.impl.data.EventLivestream;
 
 public class Types {
     static{
-        Classes.registerClass(new ClassInfo<>(EventChannel.class, "kickchannel")
+        Classes.registerClass(new ClassInfo<>(EventChannel.class, "kickeventchannel")
                 .user("kick ?event ?channels?")
-                .name("kick channel")
+                .name("kick event channel")
                 .description("Represents a Kick event channel.")
                 .since("1.0")
                 .defaultExpression(new EventValueExpression<>(EventChannel.class))
