@@ -1,0 +1,8 @@
+name: Skick
+version: '${version}'
+main: lol.aabss.skick.Skick
+api-version: '1.17'
+depend: [ Skript ]
+authors: [ aabss ]
+description: skript addon for kick.com
+website: https://aabss.lol
