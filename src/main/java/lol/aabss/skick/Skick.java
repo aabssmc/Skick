@@ -4,10 +4,14 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
+import uk.co.mistyknives.kick4j.Kick4J;
 
 import java.io.IOException;
 
 public final class Skick extends JavaPlugin {
+
+    @Getter
+    public static Kick4J client;
 
     @Getter
     private static Skick instance;

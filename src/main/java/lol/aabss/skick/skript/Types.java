@@ -12,7 +12,7 @@ import uk.co.mistyknives.kick4j.events.impl.data.EventLivestream;
 public class Types {
     static{
         Classes.registerClass(new ClassInfo<>(EventChannel.class, "kickchannel")
-                .user("kick ?channel?")
+                .user("kick ?event ?channels?")
                 .name("kick channel")
                 .description("Represents a Kick event channel.")
                 .since("1.0")
@@ -36,9 +36,9 @@ public class Types {
                 })
         );
 
-        Classes.registerClass(new ClassInfo<>(EventLivestream.class, "kicklivestream")
-                .user("kick ?live ?stream?")
-                .name("kick livestream")
+        Classes.registerClass(new ClassInfo<>(EventLivestream.class, "kickeventlivestream")
+                .user("kick ?event ?livestreams?")
+                .name("kick event livestream")
                 .description("Represents a Kick event livestream.")
                 .since("1.0")
                 .defaultExpression(new EventValueExpression<>(EventLivestream.class))
