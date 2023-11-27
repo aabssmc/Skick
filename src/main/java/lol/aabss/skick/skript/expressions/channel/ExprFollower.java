@@ -14,6 +14,8 @@ import uk.co.mistyknives.kick4j.events.impl.data.EventChannel;
 
 import javax.annotation.Nullable;
 
+import static lol.aabss.skick.Skick.client;
+
 public class ExprFollower extends SimpleExpression<EventChannel> {
 
     static{
@@ -46,6 +48,10 @@ public class ExprFollower extends SimpleExpression<EventChannel> {
 
     @Override
     public boolean init(@NotNull Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
+        if (client == null){
+            Skript.error("Kick isn't logged in. (see SecKickLogin)");
+            return false;
+        }
         if (!getParser().isCurrentEvent(ChannelFollowBukkit.class)) {
             Skript.error("Cannot use 'follower' outside of a channel follow event", ErrorQuality.SEMANTIC_ERROR);
             return false;

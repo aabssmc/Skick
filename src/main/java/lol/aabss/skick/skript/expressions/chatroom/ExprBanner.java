@@ -16,6 +16,8 @@ import uk.co.mistyknives.kick4j.events.impl.chatroom.ChatterUnbanEvent;
 
 import javax.annotation.Nullable;
 
+import static lol.aabss.skick.Skick.client;
+
 public class ExprBanner extends SimpleExpression<Object> {
 
     static{
@@ -54,6 +56,10 @@ public class ExprBanner extends SimpleExpression<Object> {
 
     @Override
     public boolean init(@NotNull Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
+        if (client == null){
+            Skript.error("Kick isn't logged in. (see SecKickLogin)");
+            return false;
+        }
         if (!getParser().isCurrentEvent(ChatterBanBukkit.class, ChatterUnbanBukkit.class)) {
             Skript.error("Cannot use 'banner' outside of a ban/unban event", ErrorQuality.SEMANTIC_ERROR);
             return false;

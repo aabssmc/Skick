@@ -49,7 +49,7 @@ public class EvtChannelWentLive extends SkriptEvent {
     @Override
     public boolean init(@NotNull Literal<?>[] args, int matchedPattern, @NotNull SkriptParser.ParseResult parseResult) {
         if (client == null){
-            Skript.error("Kick isn't logged in. (see EffKickLogin)");
+            Skript.error("Kick isn't logged in. (see SecKickLogin)");
             return false;
         }
         return true;

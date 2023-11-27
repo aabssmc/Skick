@@ -16,6 +16,8 @@ import uk.co.mistyknives.kick4j.events.impl.data.EventChannel;
 
 import javax.annotation.Nullable;
 
+import static lol.aabss.skick.Skick.client;
+
 public class ExprGifter extends SimpleExpression<EventChannel> {
 
     static{
@@ -57,6 +59,10 @@ public class ExprGifter extends SimpleExpression<EventChannel> {
 
     @Override
     public boolean init(@NotNull Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
+        if (client == null){
+            Skript.error("Kick isn't logged in. (see SecKickLogin)");
+            return false;
+        }
         if (!getParser().isCurrentEvent(ChannelGiftedSubscriptionsBukkit.class,
                 ChannelSubscriptionBukkit.class,
                 ChannelLeaderboardUpdatedBukkit.class
