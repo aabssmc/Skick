@@ -4,9 +4,13 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Literal;
 import ch.njol.skript.lang.SkriptEvent;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
+import lol.aabss.skick.events.channel.ChannelFollowBukkit;
 import lol.aabss.skick.events.client.*;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
+import uk.co.mistyknives.kick4j.Kick4J;
 
 import javax.annotation.Nullable;
 
@@ -18,6 +22,12 @@ public class EvtKickReady extends SkriptEvent {
         Skript.registerEvent("on kick ready", EvtKickReady.class, ReadyBukkit.class,
                 "[s]kick [client] ready"
         );
+        EventValues.registerEventValue(ReadyBukkit.class, Kick4J.class, new Getter<>() {
+            @Override
+            public Kick4J get(ReadyBukkit e) {
+                return e.getEvent().getClient();
+            }
+        }, 0);
     }
 
     @Override

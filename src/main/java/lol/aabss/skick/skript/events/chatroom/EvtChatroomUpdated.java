@@ -4,9 +4,12 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Literal;
 import ch.njol.skript.lang.SkriptEvent;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import lol.aabss.skick.events.chatroom.*;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
+import uk.co.mistyknives.kick4j.Kick4J;
 
 import javax.annotation.Nullable;
 
@@ -18,6 +21,12 @@ public class EvtChatroomUpdated extends SkriptEvent {
         Skript.registerEvent("on kick chatroom updated", EvtChatroomUpdated.class, ChatroomUpdatedBukkit.class,
                 "[s]kick [chat[room]] update[ed]"
         );
+        EventValues.registerEventValue(ChatroomUpdatedBukkit.class, Kick4J.class, new Getter<>() {
+            @Override
+            public Kick4J get(ChatroomUpdatedBukkit e) {
+                return e.getEvent().getClient();
+            }
+        }, 0);
     }
 
     @Override

@@ -4,9 +4,14 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Literal;
 import ch.njol.skript.lang.SkriptEvent;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import lol.aabss.skick.events.chatroom.*;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
+import uk.co.mistyknives.kick4j.Kick4J;
+import uk.co.mistyknives.kick4j.events.impl.chatroom.ChatterBanEvent;
+import uk.co.mistyknives.kick4j.events.impl.data.EventChannel;
 
 import javax.annotation.Nullable;
 
@@ -18,6 +23,24 @@ public class EvtChatterBan extends SkriptEvent {
         Skript.registerEvent("on kick chatter ban", EvtChatterBan.class, ChatterBanBukkit.class,
                 "[s]kick [chat[room]] chatter ban[ned]"
         );
+        EventValues.registerEventValue(ChatterBanBukkit.class, Kick4J.class, new Getter<>() {
+            @Override
+            public Kick4J get(ChatterBanBukkit e) {
+                return e.getEvent().getClient();
+            }
+        }, 0);
+        EventValues.registerEventValue(ChatterBanBukkit.class, EventChannel.class, new Getter<>() {
+            @Override
+            public EventChannel get(ChatterBanBukkit e) {
+                return e.getEvent().getChannel();
+            }
+        }, 0);
+        EventValues.registerEventValue(ChatterBanBukkit.class, ChatterBanEvent.User.class, new Getter<>() {
+            @Override
+            public ChatterBanEvent.User get(ChatterBanBukkit e) {
+                return e.getEvent().getBanned();
+            }
+        }, 0);
     }
 
     @Override

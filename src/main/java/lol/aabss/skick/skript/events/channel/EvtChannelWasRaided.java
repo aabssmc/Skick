@@ -18,6 +18,7 @@ public class EvtChannelWasRaided extends SkriptEvent {
         Skript.registerEvent("on kick channel was raided", EvtChannelWasRaided.class, ChannelWasRaidedBukkit.class,
                 "[s]kick [channel] [was] raided"
         );
+
     }
 
     @Override

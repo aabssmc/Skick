@@ -4,9 +4,14 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.lang.Literal;
 import ch.njol.skript.lang.SkriptEvent;
 import ch.njol.skript.lang.SkriptParser;
+import ch.njol.skript.registrations.EventValues;
+import ch.njol.skript.util.Getter;
 import lol.aabss.skick.events.channel.*;
 import org.bukkit.event.Event;
 import org.jetbrains.annotations.NotNull;
+import uk.co.mistyknives.kick4j.Kick4J;
+import uk.co.mistyknives.kick4j.events.impl.data.EventChannel;
+import uk.co.mistyknives.kick4j.events.impl.data.EventLivestream;
 
 import javax.annotation.Nullable;
 
@@ -19,6 +24,24 @@ public class EvtChannelWentOffline extends SkriptEvent {
                 "[s]kick [channel] [went|goes] offline",
                 "[s]kick [channel] [stop|end] stream"
         );
+        EventValues.registerEventValue(ChannelWentOfflineBukkit.class, Kick4J.class, new Getter<>() {
+            @Override
+            public Kick4J get(ChannelWentOfflineBukkit e) {
+                return e.getEvent().getClient();
+            }
+        }, 0);
+        EventValues.registerEventValue(ChannelWentOfflineBukkit.class, EventChannel.class, new Getter<>() {
+            @Override
+            public EventChannel get(ChannelWentOfflineBukkit e) {
+                return e.getEvent().getChannel();
+            }
+        }, 0);
+        EventValues.registerEventValue(ChannelWentOfflineBukkit.class, EventLivestream.class, new Getter<>() {
+            @Override
+            public EventLivestream get(ChannelWentOfflineBukkit e) {
+                return e.getEvent().getLivestream();
+            }
+        }, 0);
     }
 
     @Override
