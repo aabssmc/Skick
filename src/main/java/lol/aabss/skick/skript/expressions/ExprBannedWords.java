@@ -52,6 +52,10 @@ public class ExprBannedWords extends SimpleExpression<String> {
     @SuppressWarnings("unchecked")
     @Override
     public boolean init(@NotNull Expression<?>[] exprs, int matchedPattern, @NotNull Kleenean isDelayed, @NotNull SkriptParser.ParseResult parseResult) {
+        if (client == null){
+            Skript.error("Kick isn't logged in. (see SecKickLogin)");
+            return false;
+        }
         channel = (Expression<String>) exprs[0];
         return true;
     }

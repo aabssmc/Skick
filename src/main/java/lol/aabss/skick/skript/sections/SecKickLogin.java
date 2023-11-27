@@ -28,8 +28,8 @@ import static lol.aabss.skick.Skick.instance;
 @Examples({
                 "on load:",
                 "\tlogin to kick:",
-                "\t\tusername: oiiink",
-                "\t\tpassword: OiiinkYT?!?!",
+                "\t\tusername: \"oiiink\"",
+                "\t\tpassword: \"OiiinkYT?!?!\"",
                 "\t\tchannels: 7572455"})
 
 public class SecKickLogin extends Section {
