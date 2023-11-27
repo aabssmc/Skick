@@ -14,7 +14,7 @@ public final class Skick extends JavaPlugin {
     public static Kick4J client;
 
     @Getter
-    private static Skick instance;
+    public static Skick instance;
 
     @Getter
     private SkriptAddon addon;
