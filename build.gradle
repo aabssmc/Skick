@@ -27,7 +27,7 @@ repositories {
 dependencies {
     compileOnly "org.spigotmc:spigot-api:1.20.2-R0.1-SNAPSHOT"
     implementation 'com.github.MistyKnives:Kick4J:1.0'
-    implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.6.2') {
+    implementation (group: 'com.github.SkriptLang', name: 'Skript', version: '2.7.0') {
         transitive = false
     }
     shadow (group: 'org.bstats', name: 'bstats-bukkit', version: '3.0.2')
