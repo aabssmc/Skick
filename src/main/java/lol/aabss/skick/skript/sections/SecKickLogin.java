@@ -1,4 +1,4 @@
-package lol.aabss.skick.skript.effects;
+package lol.aabss.skick.skript.sections;
 
 import ch.njol.skript.Skript;
 import ch.njol.skript.config.SectionNode;
